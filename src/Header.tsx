@@ -12,6 +12,12 @@ const Header: React.FC<HeaderProps> = ({ searchQuery, handleSearch }) => {
         placeholder="Search"
         onChange={handleSearch}
       />
+      <span
+        className={!searchQuery ? 'clear-btn hide' : 'clear-btn'}
+        onClick={() => handleSearch({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>)}
+      >
+        X
+      </span>
     </div>
   );
 };

@@ -54,6 +54,18 @@ li {
   padding: 0.75rem 0.5rem;
   border-radius: 35%;
 }
+.header .clear-btn {
+  position: relative;
+  right: 1.5rem;
+  cursor: pointer;
+  display: block;
+}
+.header .clear-btn.hide {
+  display: none;
+}
+.header .clear-btn:hover {
+  color: var(--red);
+}
 .content {
   display: flex;
   flex-direction: column;

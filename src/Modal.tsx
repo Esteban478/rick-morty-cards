@@ -7,10 +7,13 @@ export interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ openModal, setOpenModal, characterData }) => {
+    const handleContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
+    }
     const handleClose = () => setOpenModal(false);
     return (
-        <div className={`modal ${openModal ? 'show' : ''}`}>
-            <div className='modal-content'>
+        <div className={`modal ${openModal ? 'show' : ''}`} onClick={handleClose}>
+            <div className='modal-content' onClick={handleContentClick}>
                 <img src={characterData.image} alt={characterData.name} />
                 <h1>{characterData.name}</h1>
                 <p>Origin: {characterData.origin.name}</p>
