@@ -9,7 +9,7 @@ interface CharacterProps {
     setCharId: (charId: string) => void;
 }
 
-const Character: React.FC<CharacterProps> = ({ id, name, image, origin, species, status, setOpenModal, setCharId }) => {
+const Character: React.FC<CharacterProps> = ({ id, name, image, setOpenModal, setCharId }) => {
     const handleClick = () => {
         setOpenModal(true);
         setCharId(id);
@@ -24,9 +24,6 @@ const Character: React.FC<CharacterProps> = ({ id, name, image, origin, species,
                     </div>
                     <div className="flip-card-back">
                         <h2>{name}</h2>
-                        <p>Origin: {origin}</p>
-                        <p>Species: {species}</p>
-                        <p>Status:  {status}</p>
                         <button className="btn" onClick={handleClick}>More info</button>
                     </div>
                 </div>

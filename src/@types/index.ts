@@ -1,19 +1,8 @@
-
-export type modalData = {
-    name: string;
-    image: string;
-    origin: {
-    name: string;
-    }
-    species: string;
-    status: string;
-}
-
  export interface CharacterData {
   id: string;
   name: string;
   image: string;
-  origin: {
+    origin: {
     name: string;
   }
   species: string;
@@ -25,4 +14,9 @@ export type modalData = {
   pages: number;
   next: string;
   prev: string;
+ }
+
+export interface Response {
+    info: Info;
+    results: CharacterData[];
  }
