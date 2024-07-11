@@ -45,10 +45,13 @@ const App = () => {
   }, [page, searchQuery])
 
   useEffect(() => {
-    const character = characters.find((character) => character.id === charId);
-    if (character) {
-      setCharacterData(character);
+    const findCharacter = () => {
+      const character = characters.find((character) => character.id === charId);
+      if (character) {
+        setCharacterData(character);
+      }
     }
+    findCharacter()
   }, [charId, characters]);
 
   const handleNextClick = () => {
