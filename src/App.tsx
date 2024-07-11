@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import Character from './Character'
 import Modal from './Modal';
 import { Info, CharacterData, Response } from './@types';
+import Header from './Header';
+import Footer from './Footer';
+import Content from './Content';
 
 const App = () => {
   const [info, setInfo] = useState({} as Info)
@@ -40,7 +42,7 @@ const App = () => {
       }
     }
     fetchData()
-  }, [page])
+  }, [page, searchQuery])
 
   useEffect(() => {
     const character = characters.find((character) => character.id === charId);
@@ -76,43 +78,9 @@ const App = () => {
         setOpenModal={setOpenModal}
         characterData={characterData}
       />} 
-      <div className='header'>
-        <input type="text" value={searchQuery} placeholder="Search" onChange={handleSearch} />
-      </div>
-
-      <div className='content'>
-        <h1>Rick and Morty Characters</h1>
-        <ul>
-          {filteredCharacters.map((character: { id: string, name: string, image: string, origin: { name: string }, species: string, status: string}) => (
-            <Character
-              id={character.id}
-              key={character.id}
-              name={character.name}
-              image={character.image}
-              origin={character.origin.name}
-              species={character.species}
-              status={character.status}
-              setOpenModal={setOpenModal}
-              setCharId={setCharId}
-            />
-          ))}
-        </ul>
-      </div>
-
-      <div className='footer'>
-        <div className='max-width'>
-          <button
-            className='prev-btn'
-            onClick={handlePrevClick}
-            disabled={page === 1}>Prev
-          </button>
-          <button
-            className='next-btn'
-            onClick={handleNextClick}
-            disabled={page === info.pages}>Next
-          </button>
-        </div>
-      </div>
+      <Header searchQuery={searchQuery} handleSearch={handleSearch} />
+      <Content characters={filteredCharacters} setOpenModal={setOpenModal} setCharId={setCharId} />
+      <Footer page={page} info={info} handlePrevClick={handlePrevClick} handleNextClick={handleNextClick} />
     </>
   )
 }
