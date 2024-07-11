@@ -12,10 +12,11 @@ html {
 }
 body {
   min-height: 100%;
-  background-color: #efefef;
+  background-color: yellow;
 }
 h1, h2 {
   margin-bottom: 1rem;
+  color: red;
 }
 ul {
   display: flex;
@@ -44,7 +45,8 @@ li {
 }
 .header input {
   width: 240px;
-  padding: 0.5rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: 35%;
 }
 .content {
   display: flex;
