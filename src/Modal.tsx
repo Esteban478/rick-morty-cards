@@ -1,7 +1,7 @@
 import { CharacterData } from "./@types";
 
 export interface ModalProps {
-    characterData: CharacterData
+    characterData: CharacterData | null;
     openModal: boolean;
     setOpenModal: (openModal: boolean) => void;
 }
@@ -11,7 +11,8 @@ const Modal: React.FC<ModalProps> = ({ openModal, setOpenModal, characterData })
         e.stopPropagation();
     }
     const handleClose = () => setOpenModal(false);
-    return (
+    
+    if (characterData) return (
         <div className={`modal ${openModal ? 'show' : ''}`} onClick={handleClose}>
             <div className='modal-content' onClick={handleContentClick}>
                 <img src={characterData.image} alt={characterData.name} />

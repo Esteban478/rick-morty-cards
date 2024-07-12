@@ -32,7 +32,7 @@ const ThemeToggle = () => {
   return (
     <div className="theme-toggle">
       <CustomSwitch checked={isRickAndMortyTheme} onChange={toggleTheme} />
-      <span>{isRickAndMortyTheme ? 'Rick and Morty' : '"Normal"'} Theme</span>
+      <span>{isRickAndMortyTheme ? 'Rick and Morty' : 'Normal'} Theme</span>
     </div>
   );
 };

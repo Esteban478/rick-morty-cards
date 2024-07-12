@@ -25,7 +25,7 @@ const App = () => {
         const data = await response.json() as Response
         setInfo(data.info)
         setCharacters(data.results)
-  
+        console.log(data)
         setFilteredCharacters(data.results)
   
         if (searchQuery === '') {
@@ -43,7 +43,8 @@ const App = () => {
       }
     }
     fetchData()
-  }, [page, searchQuery])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page])
 
   useEffect(() => {
     const findCharacter = () => {
@@ -53,7 +54,8 @@ const App = () => {
       }
     }
     findCharacter()
-  }, [charId, characters]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [charId]);
 
   const handleNextClick = () => {
     setPage(page + 1);
@@ -77,11 +79,7 @@ const App = () => {
 
   return (
     <>
-      { characterData && <Modal
-        openModal={openModal}
-        setOpenModal={setOpenModal}
-        characterData={characterData}
-      />} 
+      <Modal openModal={openModal} characterData={characterData} setOpenModal={setOpenModal}/>
       <Header searchQuery={searchQuery} handleSearch={handleSearch} />
       <ThemeToggle />
       <Content characters={filteredCharacters} setOpenModal={setOpenModal} setCharId={setCharId} />
