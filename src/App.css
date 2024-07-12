@@ -107,7 +107,7 @@ li {
 .header input {
   width: 240px;
   padding: 0.75rem 0.5rem;
-  border-radius: 35%;
+  border-radius: 25%;
 }
 .header .clear-btn {
   position: relative;
@@ -117,7 +117,7 @@ li {
   color: var(--background-color);
 }
 .header .clear-btn.hide {
-  display: none;
+  visibility: hidden;
 }
 .header .clear-btn:hover {
   color: var(--accent-color);
@@ -349,13 +349,14 @@ input:checked+.slider:before {
 
 .theme-toggle > span {
   min-width: 140px;
+  color: var(--background-color);
 }
 
 /* tiny media query for mobile */
 
 @media screen and (max-width: 467px) {
   .flip-card {
-    width: 360px;
-    height: 360px;
+    width: 320px;
+    height: 320px;
   }
 }

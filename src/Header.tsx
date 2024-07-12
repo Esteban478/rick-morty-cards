@@ -9,7 +9,7 @@ const Header: React.FC<HeaderProps> = ({ searchQuery, handleSearch }) => {
       <input
         type="text"
         value={searchQuery}
-        placeholder="Search"
+        placeholder="Search your favorite character"
         onChange={handleSearch}
       />
       <span

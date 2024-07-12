@@ -57,11 +57,15 @@ const App = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [charId]);
 
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
   const handleNextClick = () => {
     setPage(page + 1);
+    scrollToTop();
   };
   const handlePrevClick = () => {
     setPage(page > 1 ? page - 1 : 1);
+    scrollToTop();
   };
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value.toLowerCase();
