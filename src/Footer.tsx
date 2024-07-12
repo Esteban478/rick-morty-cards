@@ -16,6 +16,11 @@ const Footer: React.FC<FooterProps> = ({ page, info, handlePrevClick, handleNext
         >
           Prev
         </button>
+        <span
+          className="page-info"
+        >
+          Page: {page} / {info.pages}
+        </span>
         <button
           className='next-btn'
           onClick={handleNextClick}

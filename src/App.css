@@ -1,13 +1,71 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
 * {
   margin: 0;
   padding: 0;
 }
+
 :root {
-  --green: #0c6c3f;
-  --yellow: #fbb825;
-  --red: #e01d2b;
+  /* Normal theme */
+  --background-color: #fbb825;
+  --text-color: #0c6c3f;
+  --header-footer-bg: #0c6c3f;
+  --header-footer-text: #ffffff;
+  --card-bg: #bbb;
+  --card-back-bg: #0c6c3f;
+  --card-back-text: #ffffff;
+  --accent-color: #e01d2b;
+
+  /* Rick and Morty theme */
+  --rm-background-color: #97ce4c;
+  --rm-text-color: #00b0c8;
+  --rm-header-footer-bg: #24325fff;
+  --rm-header-footer-text: #97ce4c;
+  --rm-card-bg: #24325fff;
+  --rm-card-back-bg: #00b0c8;
+  --rm-card-back-text: #97ce4c;
+  --rm-accent-color: #ff9800;
+}
+
+body {
+  min-height: 100%;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+body.rick-and-morty-theme {
+  --background-color: var(--rm-background-color);
+  --text-color: var(--rm-text-color);
+  --header-footer-bg: var(--rm-header-footer-bg);
+  --header-footer-text: var(--rm-header-footer-text);
+  --card-bg: var(--rm-card-bg);
+  --card-back-bg: var(--rm-card-back-bg);
+  --card-back-text: var(--rm-card-back-text);
+  --accent-color: var(--rm-accent-color);
+}
+
+/* Update existing styles to use new variables */
+h1,
+h2 {
+  color: var(--accent-color);
+}
+
+.header,
+.footer {
+  background-color: var(--header-footer-bg);
+  color: var(--header-footer-text);
+}
+
+.flip-card-front {
+  background-color: var(--card-bg);
+}
+
+.flip-card-back {
+  background-color: var(--card-back-bg);
+  color: var(--card-back-text);
 }
 
 html {
@@ -18,11 +76,9 @@ html {
 }
 body {
   min-height: 100%;
-  background-color: var(--yellow);
 }
 h1, h2 {
   margin-bottom: 1rem;
-  color: var(--red);
 }
 ul {
   display: flex;
@@ -47,7 +103,6 @@ li {
   justify-content: center;
   align-items: center;
   z-index: 1;
-  background-color: var(--green);
 }
 .header input {
   width: 240px;
@@ -64,7 +119,7 @@ li {
   display: none;
 }
 .header .clear-btn:hover {
-  color: var(--red);
+  color: var(--accent-color);
 }
 .content {
   display: flex;
@@ -74,7 +129,7 @@ li {
   height: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: calc(80px + 1.5rem) 1rem;
+  padding: calc(80px + 34px + 1.5rem) 1rem calc(80px + 1.5rem);
 }
 .footer {
   position: fixed;
@@ -85,7 +140,6 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--green);
 }
 .footer .max-width {
   width: 100%;
@@ -141,7 +195,6 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: var(--green);
   color: white;
   transform: rotateY(180deg);
 }
@@ -173,19 +226,19 @@ li {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--green);
   color: white;
   transform: translate(-50%, -50%);
   padding: 20px;
   border: 1px solid #888;
   width: max-content;
+  background-color: var(--card-back-bg);
+  color: var(--background-color);
 }
 .modal-content h1 {
   margin: 1rem;
 }
 .modal-content p {
   margin: 0.25rem;
-  color: var(--yellow);
 }
 .modal-content .close-btn {
   margin-top: 1rem;
@@ -221,4 +274,78 @@ button:disabled {
 .next-btn {
   width: 20%;
   border-radius: 0 40% 40% 0;
+}
+.page-info {
+  color: var(--background-color);
+  align-self: center;
+}
+
+/* Custom Switch Styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: var(--rm-card-back-bg);
+}
+
+input:checked+.slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: calc(80px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0.5rem 0;
+  margin: 0 auto;
+  background-color: var(--accent-color);
+  z-index: 1;
+}
+
+.theme-toggle > span {
+  min-width: 140px;
 }

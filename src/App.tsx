@@ -5,6 +5,7 @@ import { Info, CharacterData, Response } from './@types';
 import Header from './Header';
 import Footer from './Footer';
 import Content from './Content';
+import ThemeToggle from './ThemeToggle';
 
 const App = () => {
   const [info, setInfo] = useState({} as Info)
@@ -82,6 +83,7 @@ const App = () => {
         characterData={characterData}
       />} 
       <Header searchQuery={searchQuery} handleSearch={handleSearch} />
+      <ThemeToggle />
       <Content characters={filteredCharacters} setOpenModal={setOpenModal} setCharId={setCharId} />
       <Footer page={page} info={info} handlePrevClick={handlePrevClick} handleNextClick={handleNextClick} />
     </>
