@@ -114,6 +114,7 @@ li {
   right: 1.5rem;
   cursor: pointer;
   display: block;
+  color: var(--background-color);
 }
 .header .clear-btn.hide {
   display: none;
@@ -348,4 +349,13 @@ input:checked+.slider:before {
 
 .theme-toggle > span {
   min-width: 140px;
+}
+
+/* tiny media query for mobile */
+
+@media screen and (max-width: 467px) {
+  .flip-card {
+    width: 360px;
+    height: 360px;
+  }
 }
